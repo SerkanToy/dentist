@@ -1,3 +1,5 @@
+﻿
+using dentist.Persistence;
 
 namespace dentist.webapi
 {
@@ -10,6 +12,10 @@ namespace dentist.webapi
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddPersistence(builder.Configuration);
+
+
+
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 

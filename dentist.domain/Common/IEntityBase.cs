@@ -9,9 +9,7 @@ namespace dentist.domain.Common
     public interface IEntityBase
     {
         Guid Id { get; set; }
-        string Name { get; set; }
-        string SurName { get; set; }
-        string Flag { get; set; }
+        string Name { get; set; }        
         string CreatedBy { get; set; }
         DateTime CreatedDate { get; set; }
         string? UpdatedBy { get; set; }
