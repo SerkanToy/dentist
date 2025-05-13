@@ -1,4 +1,5 @@
 ﻿using dentist.domain.Common;
+using System.Reflection;
 
 namespace dentist.domain.Entities
 {
@@ -6,12 +7,11 @@ namespace dentist.domain.Entities
     {
         public Title()
         {
-            Id = Guid.NewGuid();
             CreatedBy = "Sistem";
             CreatedDate = DateTime.Now;
             IsDeleted = false;
         }
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }
@@ -20,6 +20,6 @@ namespace dentist.domain.Entities
         public string? DeleteBy { get; set; }
         public DateTime? DeleteDate { get; set; }
         public bool IsDeleted { get; set; }
-        public ICollection<UserTitle> UserTitle { get; set; }
+        public ICollection<UserTitle>? UserTitle { get; set; }
     }
 }

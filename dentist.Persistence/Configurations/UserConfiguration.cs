@@ -10,29 +10,29 @@ namespace dentist.Persistence.Configurations
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.HasMany(x => x.IdentityUserRoles).WithOne().HasForeignKey(x => x.UserId).IsRequired(false);
-            builder.HasMany(x => x.UserTitle).WithOne(y => y.User).HasForeignKey(x => x.UserId).IsRequired(false);
-            builder.HasData(_data);
-        }
+            //builder.HasMany(x => x.UserRoles).WithOne(y => y.User);
+            builder.HasMany(x => x.UserTitle).WithOne(y => y.User);
+            builder.ToTable("User");
 
-        private User _data()
-        {
             User user = new User
             {
-                Id = Guid.NewGuid(),
+                Id = 1,
                 Name = "Serkan",
                 SurName = "TOY",
                 Email = "stoy@windowslive.com",
-                NormalizedEmail = "SRKNTY86@GMAIL.COM",
+                NormalizedEmail = "STOY@WINDOWSLIVE.COM",
                 PhoneNumber = "0522 698 56 98",
                 UserName = "stoy",
                 ConcurrencyStamp = Guid.NewGuid().ToString(),
                 SecurityStamp = Guid.NewGuid().ToString(),
-                NormalizedUserName = "STOY",
-                PasswordHash = ""
+                NormalizedUserName = "STOY"
             };
-            user.PasswordHash = CreatePasswordHash(user,"Qwe123");
-            return user;
+            user.PasswordHash = CreatePasswordHash(user, "Qwe123");
+
+            builder.HasData(user);
+
+            
+
         }
 
         private string CreatePasswordHash(User user, string password)

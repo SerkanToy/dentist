@@ -1,15 +1,12 @@
-﻿using dentist.domain.Common;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace dentist.domain.Entities
 {
-    public class User : IdentityUser<Guid>, IEntityBase
+    public class User : IdentityUser<int>
     {
         public User()
         {
-            Id = Guid.NewGuid();
             CreatedBy = "Sistem";
             CreatedDate = DateTime.Now;
             IsDeleted = false;
@@ -23,8 +20,8 @@ namespace dentist.domain.Entities
         public string? DeleteBy { get; set; }
         public DateTime? DeleteDate { get; set; }
         public bool IsDeleted { get; set; }
-        public ICollection<UserTitle> UserTitle { get; set; }
+        public ICollection<UserTitle>? UserTitle { get; set; }
         [NotMapped]
-        public ICollection<IdentityUserRole> IdentityUserRoles { get; set; }
+        public ICollection<UserRole>? UserRoles { get; set; }
     }
 }

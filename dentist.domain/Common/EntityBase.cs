@@ -8,7 +8,7 @@ namespace dentist.domain.Common
 {
     public class EntityBase: IEntityBase
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public int Id { get; set; }
         public string Name { get; set; }
         public string SurName { get; set; }
         public string Flag { get; set; }

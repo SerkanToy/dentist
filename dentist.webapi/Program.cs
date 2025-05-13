@@ -11,6 +11,13 @@ namespace dentist.webapi
 
             // Add services to the container.
 
+            var env = builder.Environment;
+
+            /*builder.Configuration
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);*/
+
             builder.Services.AddControllers();
             builder.Services.AddPersistence(builder.Configuration);
 

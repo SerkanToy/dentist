@@ -1,7 +1,9 @@
-﻿using dentist.Persistence.Context;
+﻿using dentist.domain.Entities;
+using dentist.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace dentist.Persistence
 {
@@ -9,10 +11,12 @@ namespace dentist.Persistence
     {
         public static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<AppDbContext>(options =>
-            {
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-            });
+            services.AddDbContext<DentistContext>(opt => 
+            opt.UseSqlServer(configuration.GetConnectionString("ConnectionStrings:DefaultConnection")));
+            
+            services.AddIdentityCore<User>()
+                .AddRoles<Role>()
+                .AddEntityFrameworkStores<DentistContext>();
         }
     }
 }

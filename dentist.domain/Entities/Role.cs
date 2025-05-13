@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace dentist.domain.Entities
 {
-    public class Role: IdentityRole<Guid>
+    public class Role: IdentityRole<int>
     {
         [NotMapped]
-        public ICollection<IdentityUserRole> IdentityUserRoles { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
     }
 }

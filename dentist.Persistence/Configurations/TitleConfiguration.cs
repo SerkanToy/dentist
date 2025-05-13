@@ -10,50 +10,50 @@ namespace dentist.Persistence.Configurations
         {
             builder.HasKey(x => x.Id);
             builder.HasMany(x => x.UserTitle).WithOne(y => y.Title).HasForeignKey(x => x.UserId).IsRequired(false);
-            builder.HasData(_data);
-        }
-
-        private List<Title> _data()
-        {
-            List<Title> title = new List<Title>
+            builder.HasData(new[]
             {
                 new Title
                 {
-                    Id = Guid.NewGuid(),
+                    Id = 1,
                     Name = "Dekan",
-                },                
+                },
                 new Title
                 {
-                    Id = Guid.NewGuid(),
+                    Id = 2,
                     Name = "Dekan Yardımcısı",
                 },
                 new Title
                 {
-                    Id = Guid.NewGuid(),
+                    Id = 3,
                     Name = "Bölüm Başkanı",
                 },
                 new Title
                 {
-                    Id = Guid.NewGuid(),
+                    Id = 4,
                     Name = "Profesör",
                 },
                 new Title
                 {
-                    Id = Guid.NewGuid(),
+                    Id = 5,
                     Name = "Doçent",
                 },
                 new Title
                 {
-                    Id = Guid.NewGuid(),
+                    Id = 6,
                     Name = "Doktor",
                 },
                 new Title
                 {
-                    Id = Guid.NewGuid(),
+                    Id = 7,
                     Name = "Araştırma Görevlisi",
                 }
-            };
-            return title;
+                ,
+                new Title
+                {
+                    Id = 8,
+                    Name = "Yazılımcı",
+                }
+            });
         }
     }
 }
